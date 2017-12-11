@@ -10,6 +10,7 @@ import { ThreadSectionComponent } from './thread-section/thread-section.componen
 import { MessageSectionComponent } from './message-section/message-section.component';
 import { ThreadListComponent } from './thread-list/thread-list.component';
 import { MessageListComponent } from './message-list/message-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MessageListComponent } from './message-list/message-list.component';
     MessageListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [ThreadsService],
   bootstrap: [AppComponent]

@@ -10,6 +10,6 @@ export class ThreadsService {
   }
 
   loadUserThreads(): Observable<AllUserData> {
-    return this.http.get<AllUserData>('/api/threads')
+    return this.http.get<AllUserData>('/api/threads');
   }
 }
