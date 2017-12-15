@@ -1,16 +1,29 @@
-import { ThreadsService } from './services/threads.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+import * as _ from 'lodash';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import * as _ from 'lodash';
 import { UserSelectionComponent } from './user-selection/user-selection.component';
 import { ThreadSectionComponent } from './thread-section/thread-section.component';
 import { MessageSectionComponent } from './message-section/message-section.component';
 import { ThreadListComponent } from './thread-list/thread-list.component';
 import { MessageListComponent } from './message-list/message-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ThreadsService } from './services/threads.service';
+
+import { INITIAL_APPLICATION_STATE } from './store/application-state';
+import { UiState } from "./store/ui-state";
+import { StoreData} from "./store/store-data";
+import { uiState } from './store/reducers/uiState.reducers';
+import { storeData } from './store/reducers/storeData.reducers';
+
+export const reducers = {
+  uiState,
+  storeData
+}
+
 
 @NgModule({
   declarations: [
@@ -23,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers,{initialState: INITIAL_APPLICATION_STATE})
   ],
   providers: [ThreadsService],
   bootstrap: [AppComponent]
